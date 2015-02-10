@@ -162,10 +162,29 @@
 -(void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage]; //カメラロールから画像取り込み
+    
+    float imageW = image.size.width;
+    float imageH = image.size.height;
+    CGRect trimArea;
+    
+    if (imageH * 1.27385892 <= imageW ) {
+        float posX = imageW / 2 - imageH * 1.27385892 / 2;
+        float posY = 0;
+        trimArea = CGRectMake(posX, posY, imageH * 1.27385892, imageH);  //画像のトリミングの設定
+    } else{
+        float posX = 0;
+        float posY = imageH * 1.27385892 / 2 - imageW / 2;
+        trimArea = CGRectMake(posX, posY, imageW * 1.27385892, imageW);
+    }
+    
+    CGImageRef srcImageRef = [image CGImage];
+    CGImageRef trimmedImageRef = CGImageCreateWithImageInRect(srcImageRef, trimArea);
+    UIImage *trimmedImage = [UIImage imageWithCGImage:trimmedImageRef];
+    
     
     [self dismissViewControllerAnimated:YES completion:^{
-    self.imageView.image = image;
+        self.imageView.image = trimmedImage;
   //
     }];
 
