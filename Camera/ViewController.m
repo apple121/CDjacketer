@@ -62,7 +62,7 @@
 }
 
 - (IBAction)showImagePicker:(id)sender {
-    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //カメラロールをから画像取得
     
     if([UIImagePickerController isSourceTypeAvailable:sourceType]){
         UIImagePickerController *picker = [[UIImagePickerController alloc]init];
@@ -162,11 +162,15 @@
 -(void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage]; //カメラロールから画像取り込み
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
     float imageW = image.size.width;
     float imageH = image.size.height;
     CGRect trimArea;
+    
+    if(imageH >= imageW){
+        [self showAlert:@"" text:@"縦長の画像はうまく表示されない可能性があります"];
+    }
     
     if (imageH * 1.27385892 <= imageW ) {
         float posX = imageW / 2 - imageH * 1.27385892 / 2;
@@ -182,10 +186,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     CGImageRef trimmedImageRef = CGImageCreateWithImageInRect(srcImageRef, trimArea);
     UIImage *trimmedImage = [UIImage imageWithCGImage:trimmedImageRef];
     
+    UIGraphicsEndImageContext(); //これはいるのか?
     
     [self dismissViewControllerAnimated:YES completion:^{
         self.imageView.image = trimmedImage;
-  //
     }];
 
 }
