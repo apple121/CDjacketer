@@ -62,13 +62,17 @@
 }
 
 - (IBAction)showImagePicker:(id)sender {
-    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //カメラロールをから画像取得
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //カメラロールから画像取得
     
     if([UIImagePickerController isSourceTypeAvailable:sourceType]){
         UIImagePickerController *picker = [[UIImagePickerController alloc]init];
         picker.sourceType = sourceType;
         picker.delegate = self;
-        [self presentViewController:picker animated:YES completion:NULL];
+        picker.allowsEditing = YES;
+        
+//        [self.navigationController pushViewController:picker animated:YES];
+        
+        [self presentViewController:picker animated:YES completion:NULL]; //カメラロール出現に関係
         
     }
 }
@@ -162,34 +166,10 @@
 -(void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage]; //トリミングした画像をimageに入れている
     
-    float imageW = image.size.width;
-    float imageH = image.size.height;
-    CGRect trimArea;
-    
-    if(imageH >= imageW){
-        [self showAlert:@"" text:@"縦長の画像はうまく表示されない可能性があります"];
-    }
-    
-    if (imageH * 1.27385892 <= imageW ) {
-        float posX = imageW / 2 - imageH * 1.27385892 / 2;
-        float posY = 0;
-        trimArea = CGRectMake(posX, posY, imageH * 1.27385892, imageH);  //画像のトリミングの設定
-    } else{
-        float posX = 0;
-        float posY = imageH * 1.27385892 / 2 - imageW / 2;
-        trimArea = CGRectMake(posX, posY, imageW * 1.27385892, imageW);
-    }
-    
-    CGImageRef srcImageRef = [image CGImage];
-    CGImageRef trimmedImageRef = CGImageCreateWithImageInRect(srcImageRef, trimArea);
-    UIImage *trimmedImage = [UIImage imageWithCGImage:trimmedImageRef];
-    
-    UIGraphicsEndImageContext(); //これはいるのか?
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-        self.imageView.image = trimmedImage;
+    [self dismissViewControllerAnimated:YES completion:^{   //ピッカーを閉じる
+        self.imageView.image = image;
     }];
 
 }
