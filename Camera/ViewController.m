@@ -62,14 +62,13 @@
 }
 
 - (IBAction)showImagePicker:(id)sender {
-    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //カメラロールから画像取得
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //画像の取得先をカメラロールに
     
     if([UIImagePickerController isSourceTypeAvailable:sourceType]){
         UIImagePickerController *picker = [[UIImagePickerController alloc]init];
         picker.sourceType = sourceType;
         picker.delegate = self;
         picker.allowsEditing = YES;
-        
 //        [self.navigationController pushViewController:picker animated:YES];
         
         [self presentViewController:picker animated:YES completion:NULL]; //カメラロール出現に関係
@@ -167,9 +166,27 @@
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage]; //トリミングした画像をimageに入れている
+    float imageW = image.size.width;
+    float imageH = image.size.height; //縦横サイズが 640.000である
+    float trimH = imageW / 307 * 241;
+    NSLog(@"%f,%f,%f,%f",imageW,imageH,trimH,imageW/2 - trimH/2);
+    
+    UIImage *reRectImage;
+    
+    CGRect rect = CGRectMake(0, 0, imageW, trimH);
+    
+    UIGraphicsBeginImageContext(rect.size);
+    [image drawAtPoint:rect.origin];
+    reRectImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+//    CGImageRef srcImageRef = [image CGImage];
+//    CGImageRef trimmedImageRef = CGImageCreateWithImageInRect(srcImageRef, trimArea);
+//    UIImage *trimmedImage = [UIImage imageWithCGImage:trimmedImageRef];
+//
     
     [self dismissViewControllerAnimated:YES completion:^{   //ピッカーを閉じる
-        self.imageView.image = image;
+        self.imageView.image = reRectImage;
     }];
 
 }
