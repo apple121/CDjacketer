@@ -25,7 +25,7 @@
                                     </barButtonItem>
                                     <barButtonItem id="2Bi-CN-KBR">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EuD-FI-Lr6">
-                                            <rect key="frame" x="111" y="-5" width="82" height="54"/>
+                                            <rect key="frame" x="103" y="-5" width="113" height="54"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <state key="normal" title="画像を保存">
@@ -40,29 +40,29 @@
                                             <action selector="saveImage:" destination="vXZ-lx-hvc" id="PFk-1K-QLN"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" id="UQK-l8-oo0">
+                                        <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" onImage="high.png" offImage="high.png" id="LFk-da-eHF">
+                                            <rect key="frame" x="-25" y="-15" width="51" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="switch:" destination="vXZ-lx-hvc" eventType="valueChanged" id="xhp-8w-PoI"/>
+                                            </connections>
+                                        </switch>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="rsS-Ie-XaE">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="アーティスト名" minimumFontSize="12" clearButtonMode="whileEditing" id="y3D-8T-vsZ">
-                                        <rect key="frame" x="8" y="330" width="110" height="21"/>
+                                    <textField opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="アーティスト名" minimumFontSize="12" clearButtonMode="whileEditing" id="y3D-8T-vsZ">
+                                        <rect key="frame" x="8" y="489" width="110" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <action selector="artistText:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="YcN-9E-Nz9"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="タイトル" minimumFontSize="12" clearButtonMode="whileEditing" id="CjA-H2-BTM">
-                                        <rect key="frame" x="133" y="329" width="97" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                        <connections>
-                                            <action selector="titleText:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="iqK-4d-Pnl"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" id="acR-T3-3UZ">
@@ -78,10 +78,26 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="7"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="拡散くん.gif" id="bOp-FN-HpX">
+                                    <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_image.gif" id="bOp-FN-HpX">
                                         <rect key="frame" x="7" y="78" width="307" height="241"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="タイトル" minimumFontSize="12" clearButtonMode="whileEditing" id="CjA-H2-BTM">
+                                        <rect key="frame" x="131" y="488" width="97" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <action selector="titleText:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="iqK-4d-Pnl"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="画像取り込み位置 : 上部" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zRQ-bc-TcD">
+                                        <rect key="frame" x="230" y="493" width="154" height="13"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                        <color key="textColor" red="1" green="0.011750558059999999" blue="0.032310639939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -94,6 +110,7 @@
                         <outlet property="scrollView" destination="rsS-Ie-XaE" id="gKC-m7-4De"/>
                         <outlet property="textFieldArtist" destination="y3D-8T-vsZ" id="HGJ-iE-TI2"/>
                         <outlet property="textFieldTitle" destination="CjA-H2-BTM" id="jzz-Sj-QMI"/>
+                        <outlet property="trimPosition" destination="zRQ-bc-TcD" id="6Vy-9B-0rn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -101,7 +118,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="拡散くん.gif" width="600" height="400"/>
+        <image name="high.png" width="30" height="29"/>
+        <image name="sample_image.gif" width="250" height="250"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

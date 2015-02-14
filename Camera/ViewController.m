@@ -16,10 +16,13 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *artist;
 @property (weak, nonatomic) IBOutlet UILabel *antitle;
+
+@property (weak, nonatomic) IBOutlet UILabel *trimPosition;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldArtist;
-
 @property (weak, nonatomic) IBOutlet UITextField *textFieldTitle;
+@property (nonatomic) bool flag;
 
 
 -(IBAction)bkgTapped:(id)sender;
@@ -35,6 +38,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
     
     // 全テキストフィールドのdelegateにselfを代入
     for (id v in _scrollView.subviews){
@@ -59,6 +63,22 @@
 
 - (IBAction)titleText:(UITextField *)sender {
     self.antitle.text = sender.text;
+}
+
+- (IBAction)switch:(UISwitch *)sender {
+    
+    if(sender.on){
+        self.flag = true;
+        [self showAlert:@"注意" text:@"画像の下部をトリミングします"];
+        self.trimPosition.text = @"画像取り込み位置 : 下部";
+        
+        
+    } else {
+        self.flag = false;
+        [self showAlert:@"注意" text:@"画像の上部をトリミングします"];
+            self.trimPosition.text = @"画像取り込み位置 : 上部";
+
+    }
 }
 
 - (IBAction)showImagePicker:(id)sender {
@@ -162,18 +182,21 @@
 }
 
 
--(void)imagePickerController:(UIImagePickerController *)picker
+- (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage]; //トリミングした画像をimageに入れている
-    float imageW = image.size.width;
-    float imageH = image.size.height; //縦横サイズが 640.000である
+    float imageW = image.size.width; //縦横サイズが 640.000である
     float trimH = imageW / 307 * 241;
-    NSLog(@"%f,%f,%f,%f",imageW,imageH,trimH,imageW/2 - trimH/2);
-    
+    NSLog(@"%f,%f,%d",imageW,trimH,self.flag);
+    CGRect rect;
     UIImage *reRectImage;
     
-    CGRect rect = CGRectMake(0, 0, imageW, trimH);
+    if (self.flag == true) {                        //スイッチオンで下をオフで上をトリミング
+        rect = CGRectMake(0, -140, imageW, trimH);
+    } else {
+        rect = CGRectMake(0, 0, imageW, trimH);
+    }
     
     UIGraphicsBeginImageContext(rect.size);
     [image drawAtPoint:rect.origin];
@@ -183,7 +206,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 //    CGImageRef srcImageRef = [image CGImage];
 //    CGImageRef trimmedImageRef = CGImageCreateWithImageInRect(srcImageRef, trimArea);
 //    UIImage *trimmedImage = [UIImage imageWithCGImage:trimmedImageRef];
-//
+    
     
     [self dismissViewControllerAnimated:YES completion:^{   //ピッカーを閉じる
         self.imageView.image = reRectImage;
@@ -228,7 +251,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [self showAlert:@"" text:@"保存に失敗しました"];
     }
 }
-
 
 @end
 
