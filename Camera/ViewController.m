@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
+#import <iAd/iAd.h>
 
-@interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate,ADBannerViewDelegate>
 {
     BOOL observing_;
     UITextField *activeField; //選択されたテキストフィールドを入れる
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFieldTitle;
 @property (nonatomic) bool flag;
 
+@property (weak, nonatomic) IBOutlet ADBannerView *bannerView;
 
 -(IBAction)bkgTapped:(id)sender;
 
@@ -250,6 +252,38 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     } else {
         [self showAlert:@"" text:@"保存に失敗しました"];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    CGRect bannerFrame = self.bannerView.frame;
+    bannerFrame.origin.y = self.scrollView.frame.size.height;
+    self.bannerView.frame = bannerFrame;
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    CGRect bannerFrame = banner.frame;
+    bannerFrame.origin.y = self.scrollView.frame.size.height - banner.frame.size.height;
+    
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         banner.frame = bannerFrame;
+                     }];
+    NSLog(@"広告在庫あり");
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    CGRect bannerFrame = banner.frame;
+    bannerFrame.origin.y = self.scrollView.frame.size.height;
+    
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         banner.frame = bannerFrame;
+                     }];
+    NSLog(@"広告在庫なし");
 }
 
 @end

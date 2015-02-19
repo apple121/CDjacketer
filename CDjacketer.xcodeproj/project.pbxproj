@@ -24,6 +24,7 @@
 		1F558A50199B1BB90035DEDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F558A4E199B1BB90035DEDB /* InfoPlist.strings */; };
 		1F558A52199B1BB90035DEDB /* CameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F558A51199B1BB90035DEDB /* CameraTests.m */; };
 		1F6A791B1A8B18C100C6F94A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F558A3E199B1BB80035DEDB /* Images.xcassets */; };
+		1FD117BA1A91BB3200565FDD /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD117B91A91BB3200565FDD /* iAd.framework */; };
 		1FE454F019D55C2C007C40F9 /* 201211_pitb_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE454EF19D55C2C007C40F9 /* 201211_pitb_h.png */; };
 		1FE454F219D68933007C40F9 /* 拡散くん.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1FE454F119D68933007C40F9 /* 拡散くん.gif */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,7 @@
 		1F558A4D199B1BB90035DEDB /* CameraTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CameraTests-Info.plist"; sourceTree = "<group>"; };
 		1F558A4F199B1BB90035DEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F558A51199B1BB90035DEDB /* CameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraTests.m; sourceTree = "<group>"; };
+		1FD117B91A91BB3200565FDD /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		1FE454EF19D55C2C007C40F9 /* 201211_pitb_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 201211_pitb_h.png; sourceTree = "<group>"; };
 		1FE454F119D68933007C40F9 /* 拡散くん.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "拡散くん.gif"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FD117BA1A91BB3200565FDD /* iAd.framework in Frameworks */,
 				1F1B1FB519B952AD00F94862 /* AudioToolbox.framework in Frameworks */,
 				1F558A29199B1BB80035DEDB /* CoreGraphics.framework in Frameworks */,
 				1F558A2B199B1BB80035DEDB /* UIKit.framework in Frameworks */,
@@ -121,6 +124,7 @@
 		1F558A25199B1BB80035DEDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1FD117B91A91BB3200565FDD /* iAd.framework */,
 				1F1B1FB419B952AD00F94862 /* AudioToolbox.framework */,
 				1F558A26199B1BB80035DEDB /* Foundation.framework */,
 				1F558A28199B1BB80035DEDB /* CoreGraphics.framework */,
@@ -416,7 +420,7 @@
 				INFOPLIST_FILE = "Camera/Camera-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -433,7 +437,7 @@
 				INFOPLIST_FILE = "Camera/Camera-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

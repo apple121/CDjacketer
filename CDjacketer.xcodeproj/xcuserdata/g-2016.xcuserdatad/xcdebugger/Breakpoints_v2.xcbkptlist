@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Camera/ViewController.m"
-            timestampString = "445424662.849617"
+            timestampString = "445759979.182665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "@implementation ViewController"
             landmarkType = "3">
          </BreakpointContent>
