@@ -22,25 +22,25 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <action selector="artistText:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="YcN-9E-Nz9"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" id="acR-T3-3UZ">
-                                        <rect key="frame" x="8" y="29" width="60" height="20"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.85000000000000031" id="acR-T3-3UZ">
+                                        <rect key="frame" x="8" y="29" width="71" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="7"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DnZ-sg-ena">
-                                        <rect key="frame" x="73" y="30" width="75" height="19"/>
+                                        <rect key="frame" x="82" y="30" width="230" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="7"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_image.gif" id="bOp-FN-HpX">
+                                    <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoImage.png" id="bOp-FN-HpX">
                                         <rect key="frame" x="7" y="78" width="307" height="241"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -74,30 +74,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <barButtonItem title="画像を選択" id="aX6-cK-Obn">
+                                    <barButtonItem systemItem="camera" id="aX6-cK-Obn">
                                         <connections>
                                             <action selector="showImagePicker:" destination="vXZ-lx-hvc" id="KyL-Nf-YWK"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem id="2Bi-CN-KBR">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EuD-FI-Lr6">
-                                            <rect key="frame" x="103" y="-5" width="113" height="54"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <state key="normal" title="画像を保存">
-                                                <color key="titleColor" red="1" green="0.0" blue="0.12889330169999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="saveImage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="sEN-3S-06G"/>
-                                            </connections>
-                                        </button>
+                                    <barButtonItem width="99" style="plain" systemItem="fixedSpace" id="HN9-Vl-L8t"/>
+                                    <barButtonItem systemItem="action" id="lhJ-QS-OHN">
                                         <connections>
-                                            <action selector="saveImage:" destination="vXZ-lx-hvc" id="PFk-1K-QLN"/>
+                                            <action selector="pickerShareButton:" destination="vXZ-lx-hvc" id="QZF-HX-VeS"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem width="81" style="plain" systemItem="fixedSpace" id="0ye-UQ-DzW"/>
                                     <barButtonItem style="plain" id="UQK-l8-oo0">
-                                        <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" onImage="high.png" offImage="high.png" id="LFk-da-eHF">
+                                        <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="LFk-da-eHF">
                                             <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <connections>
@@ -126,8 +116,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="high.png" width="320" height="568"/>
-        <image name="sample_image.gif" width="250" height="250"/>
+        <image name="NoImage.png" width="598" height="408"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

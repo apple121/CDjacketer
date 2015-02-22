@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F1B1FB319B84B9F00F94862 /* sample_image.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1F1B1FB219B84B9F00F94862 /* sample_image.gif */; };
 		1F1B1FB519B952AD00F94862 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1B1FB419B952AD00F94862 /* AudioToolbox.framework */; };
 		1F1B1FB819B953FA00F94862 /* camera1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1F1B1FB719B953FA00F94862 /* camera1.mp3 */; };
-		1F1B1FB919C0285A00F94862 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F558A38199B1BB80035DEDB /* Main.storyboard */; };
 		1F558A27199B1BB80035DEDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F558A26199B1BB80035DEDB /* Foundation.framework */; };
 		1F558A29199B1BB80035DEDB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F558A28199B1BB80035DEDB /* CoreGraphics.framework */; };
 		1F558A2B199B1BB80035DEDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F558A2A199B1BB80035DEDB /* UIKit.framework */; };
@@ -24,6 +22,9 @@
 		1F558A50199B1BB90035DEDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F558A4E199B1BB90035DEDB /* InfoPlist.strings */; };
 		1F558A52199B1BB90035DEDB /* CameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F558A51199B1BB90035DEDB /* CameraTests.m */; };
 		1F6A791B1A8B18C100C6F94A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F558A3E199B1BB80035DEDB /* Images.xcassets */; };
+		1F82B5351A9A2DD600D954B4 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F82B5341A9A2DD600D954B4 /* Social.framework */; };
+		1F82B53B1A9A4B8500D954B4 /* NoImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F82B53A1A9A4B8500D954B4 /* NoImage.png */; };
+		1F82B53E1A9A4D4C00D954B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F82B53C1A9A4D4C00D954B4 /* Main.storyboard */; };
 		1FD117BA1A91BB3200565FDD /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD117B91A91BB3200565FDD /* iAd.framework */; };
 		1FE454F019D55C2C007C40F9 /* 201211_pitb_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE454EF19D55C2C007C40F9 /* 201211_pitb_h.png */; };
 		1FE454F219D68933007C40F9 /* 拡散くん.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1FE454F119D68933007C40F9 /* 拡散くん.gif */; };
@@ -40,7 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F1B1FB219B84B9F00F94862 /* sample_image.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sample_image.gif; sourceTree = SOURCE_ROOT; };
 		1F1B1FB419B952AD00F94862 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		1F1B1FB719B953FA00F94862 /* camera1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = camera1.mp3; sourceTree = "<group>"; };
 		1F558A23199B1BB80035DEDB /* Camera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Camera.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,7 +53,6 @@
 		1F558A34199B1BB80035DEDB /* Camera-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Camera-Prefix.pch"; sourceTree = "<group>"; };
 		1F558A35199B1BB80035DEDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1F558A36199B1BB80035DEDB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1F558A39199B1BB80035DEDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F558A3B199B1BB80035DEDB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1F558A3C199B1BB80035DEDB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1F558A3E199B1BB80035DEDB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -62,6 +61,9 @@
 		1F558A4D199B1BB90035DEDB /* CameraTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CameraTests-Info.plist"; sourceTree = "<group>"; };
 		1F558A4F199B1BB90035DEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F558A51199B1BB90035DEDB /* CameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraTests.m; sourceTree = "<group>"; };
+		1F82B5341A9A2DD600D954B4 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		1F82B53A1A9A4B8500D954B4 /* NoImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoImage.png; sourceTree = SOURCE_ROOT; };
+		1F82B53D1A9A4D4C00D954B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FD117B91A91BB3200565FDD /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		1FE454EF19D55C2C007C40F9 /* 201211_pitb_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 201211_pitb_h.png; sourceTree = "<group>"; };
 		1FE454F119D68933007C40F9 /* 拡散くん.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "拡散くん.gif"; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F82B5351A9A2DD600D954B4 /* Social.framework in Frameworks */,
 				1FD117BA1A91BB3200565FDD /* iAd.framework in Frameworks */,
 				1F1B1FB519B952AD00F94862 /* AudioToolbox.framework in Frameworks */,
 				1F558A29199B1BB80035DEDB /* CoreGraphics.framework in Frameworks */,
@@ -124,6 +127,7 @@
 		1F558A25199B1BB80035DEDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F82B5341A9A2DD600D954B4 /* Social.framework */,
 				1FD117B91A91BB3200565FDD /* iAd.framework */,
 				1F1B1FB419B952AD00F94862 /* AudioToolbox.framework */,
 				1F558A26199B1BB80035DEDB /* Foundation.framework */,
@@ -139,10 +143,10 @@
 			children = (
 				1F558A35199B1BB80035DEDB /* AppDelegate.h */,
 				1F558A36199B1BB80035DEDB /* AppDelegate.m */,
-				1F1B1FB219B84B9F00F94862 /* sample_image.gif */,
-				1F558A38199B1BB80035DEDB /* Main.storyboard */,
+				1F82B53A1A9A4B8500D954B4 /* NoImage.png */,
 				1FE454F119D68933007C40F9 /* 拡散くん.gif */,
 				1F558A3B199B1BB80035DEDB /* ViewController.h */,
+				1F82B53C1A9A4D4C00D954B4 /* Main.storyboard */,
 				1F558A3C199B1BB80035DEDB /* ViewController.m */,
 				1FE454EF19D55C2C007C40F9 /* 201211_pitb_h.png */,
 				1F558A3E199B1BB80035DEDB /* Images.xcassets */,
@@ -261,13 +265,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F1B1FB319B84B9F00F94862 /* sample_image.gif in Resources */,
+				1F82B53E1A9A4D4C00D954B4 /* Main.storyboard in Resources */,
 				1FE454F219D68933007C40F9 /* 拡散くん.gif in Resources */,
 				1F6A791B1A8B18C100C6F94A /* Images.xcassets in Resources */,
-				1F1B1FB919C0285A00F94862 /* Main.storyboard in Resources */,
 				1FE454F019D55C2C007C40F9 /* 201211_pitb_h.png in Resources */,
 				1F558A31199B1BB80035DEDB /* InfoPlist.strings in Resources */,
 				1F1B1FB819B953FA00F94862 /* camera1.mp3 in Resources */,
+				1F82B53B1A9A4B8500D954B4 /* NoImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,20 +323,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		1F558A38199B1BB80035DEDB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1F558A39199B1BB80035DEDB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1F558A4E199B1BB90035DEDB /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1F558A4F199B1BB90035DEDB /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1F82B53C1A9A4D4C00D954B4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F82B53D1A9A4D4C00D954B4 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

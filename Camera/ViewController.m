@@ -61,6 +61,9 @@
 
 - (IBAction)artistText:(UITextField *)sender {
     self.artist.text = sender.text;
+    if (sender.text.length >= 12) {
+        [self showAlert:@"文字数を減らしてください" text:@"全角12文字,半角20文字以上は\n正しく表示出来ません"];
+    }
 }
 
 - (IBAction)titleText:(UITextField *)sender {
@@ -85,23 +88,34 @@
 
 - (IBAction)showImagePicker:(id)sender {
     
+    UIActionSheet *photoChoice = [[UIActionSheet alloc] init];
+    photoChoice.delegate = self;
+    [photoChoice addButtonWithTitle:@"カメラで撮影"];
+    [photoChoice addButtonWithTitle:@"カメラロールから選択"];
+    [photoChoice addButtonWithTitle:@"キャンセル"];
+    photoChoice.cancelButtonIndex = 2;
+    photoChoice.destructiveButtonIndex = 0; //赤くするボタン
+    photoChoice.tag = 0;    //タグ設定 0
+    [photoChoice showInView:self.view];
     
-    
-    
-    
-    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //画像の取得先をカメラロールに
-    
-    if([UIImagePickerController isSourceTypeAvailable:sourceType]){
-        UIImagePickerController *picker = [[UIImagePickerController alloc]init];
-        picker.sourceType = sourceType;
-        picker.delegate = self;
-        picker.allowsEditing = YES;
-//        [self.navigationController pushViewController:picker animated:YES];
-        
-        [self presentViewController:picker animated:YES completion:NULL]; //カメラロール出現に関係
-        
-    }
 }
+
+- (IBAction)pickerShareButton:(id)sender {
+    
+    UIActionSheet *photoShare = [[UIActionSheet alloc] init];
+    photoShare.delegate = self;
+    [photoShare addButtonWithTitle:@"画像を保存"];
+    [photoShare addButtonWithTitle:@"Twitterでシェアする"];
+    [photoShare addButtonWithTitle:@"LINEでシェアする"];
+//    [photoShare addButtonWithTitle:@"Facebookでシェアする"];
+    [photoShare addButtonWithTitle:@"キャンセル"];
+    photoShare.cancelButtonIndex = 3;
+    photoShare.destructiveButtonIndex = 0;
+    photoShare.tag = 1;
+    [photoShare showInView:self.view];
+    
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -178,16 +192,96 @@
     [self.view endEditing:YES];
 }
 
-// アラートの表示
-- (void)showAlert:(NSString *)title text:(NSString *)text {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:text
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
+// アクションシートの処理
+- (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if(actionSheet.tag == 0){
+        switch (buttonIndex) {
+            case 0:
+                
+                if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                    picker.delegate = self;
+                    picker.sourceType = UIImagePickerControllerSourceTypeCamera;  //取得先カメラ
+                    picker.allowsEditing = YES;
+                    [self presentViewController:picker animated:YES completion:NULL];
+                }
+                break;
+                
+            case 1:
+                
+                if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]){
+                    UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+                    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //画像の取得先をカメラロールに
+                    picker.delegate = self;
+                    picker.allowsEditing = YES;
+                    [self presentViewController:picker animated:YES completion:NULL];
+                }
+                break;
+        }
+    } else if (actionSheet.tag == 1){
+        
+        
+        CGRect screenRect = CGRectMake(0,0,320,325);
+        UIGraphicsBeginImageContextWithOptions(screenRect.size,NO,0);
+        
+        CGContextRef ctx = UIGraphicsGetCurrentContext();
+        [[UIColor blackColor] set];
+        CGContextFillRect(ctx, screenRect);
+        
+        [self.view.layer renderInContext:ctx];
+        UIImage *screenImage = UIGraphicsGetImageFromCurrentImageContext();
+        
+        UIPasteboard *pasteboard;
+        
+        switch (buttonIndex) {
+            case 0:
+                
+                //フォトアルバムへの書き込み
+                UIImageWriteToSavedPhotosAlbum(screenImage,
+                                               self,
+                                               @selector(finishExport:didFinishSavingWithError:contextInfo:),
+                                               nil);
+                UIGraphicsEndImageContext();
+                
+                //    //シャッター音設定
+                //    SystemSoundID sound_1;
+                //    NSURL* soundURL = [[NSBundle mainBundle]URLForResource:@"camera1"
+                //                                             withExtension:@"mp3"];
+                //    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &sound_1);
+                //    AudioServicesPlayAlertSound(sound_1);
+                
+                break;
+                
+            case 1:
+                
+                if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]){
+                    SLComposeViewController *tweet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+                    
+                    [tweet setInitialText:@"CDじゃけったーで作成しました。"];
+//                    [tweet addURL:[NSURL URLWithString:@"http:"]];
+                    [tweet addImage:screenImage];
+                    [self presentViewController:tweet animated:YES completion:nil];
+                    
+                }
+                break;
+                
+            case 2:
+                pasteboard = [UIPasteboard generalPasteboard];
+                [pasteboard setData:UIImagePNGRepresentation(screenImage)
+                  forPasteboardType:@"public.png"];
+                
+                // pasteboardを使ってパスを生成
+                NSString *LineUrlString = [NSString stringWithFormat:@"line://msg/image/%@",
+                                           pasteboard.name];
+                // URLスキームを使ってLINEを起動
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:LineUrlString]];
+                
+                break;
+                
+        }
+    }
 }
-
 
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -222,32 +316,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 }
 
 
-- (IBAction)saveImage:(id)sender {
     
-    CGRect screenRect = CGRectMake(0,0,320,325);
-    UIGraphicsBeginImageContextWithOptions(screenRect.size,NO,0);
-    
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    [[UIColor blackColor] set];
-    CGContextFillRect(ctx, screenRect);
-    
-    [self.view.layer renderInContext:ctx];
-    
-    UIImage *screenImage = UIGraphicsGetImageFromCurrentImageContext();
-    //フォトアルバムへの書き込み
-    UIImageWriteToSavedPhotosAlbum(screenImage,
-                                   self,
-                                   @selector(finishExport:didFinishSavingWithError:contextInfo:),
-                                   nil);
-    UIGraphicsEndImageContext();
-    
-    //シャッター音設定
-    SystemSoundID sound_1;
-    NSURL* soundURL = [[NSBundle mainBundle]URLForResource:@"camera1"
-                                             withExtension:@"mp3"];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &sound_1);
-    AudioServicesPlayAlertSound(sound_1);
-}
 
 //フォト書き込み完了
 - (void)finishExport:(UIImage *)image didFinishSavingWithError:(NSError *)error
@@ -257,6 +326,16 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     } else {
         [self showAlert:@"" text:@"保存に失敗しました"];
     }
+}
+
+// アラートの表示
+- (void)showAlert:(NSString *)title text:(NSString *)text {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:text
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)viewDidAppear:(BOOL)animated
