@@ -84,6 +84,11 @@
 }
 
 - (IBAction)showImagePicker:(id)sender {
+    
+    
+    
+    
+    
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //画像の取得先をカメラロールに
     
     if([UIImagePickerController isSourceTypeAvailable:sourceType]){

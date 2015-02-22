@@ -14,7 +14,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="rsS-Ie-XaE">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="アーティスト名" minimumFontSize="12" clearButtonMode="whileEditing" id="y3D-8T-vsZ">
@@ -60,46 +60,8 @@
                                         <color key="textColor" red="1" green="0.011750558059999999" blue="0.032310639939999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Te3-QO-Frb">
-                                        <rect key="frame" x="0.0" y="474" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <items>
-                                            <barButtonItem title="画像を選択" id="aX6-cK-Obn">
-                                                <connections>
-                                                    <action selector="showImagePicker:" destination="vXZ-lx-hvc" id="KyL-Nf-YWK"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem id="2Bi-CN-KBR">
-                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EuD-FI-Lr6">
-                                                    <rect key="frame" x="103" y="-5" width="113" height="54"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <state key="normal" title="画像を保存">
-                                                        <color key="titleColor" red="1" green="0.0" blue="0.12889330169999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="saveImage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="sEN-3S-06G"/>
-                                                    </connections>
-                                                </button>
-                                                <connections>
-                                                    <action selector="saveImage:" destination="vXZ-lx-hvc" id="PFk-1K-QLN"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" id="UQK-l8-oo0">
-                                                <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" onImage="high.png" offImage="high.png" id="LFk-da-eHF">
-                                                    <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <connections>
-                                                        <action selector="switch:" destination="vXZ-lx-hvc" eventType="valueChanged" id="xhp-8w-PoI"/>
-                                                    </connections>
-                                                </switch>
-                                            </barButtonItem>
-                                        </items>
-                                    </toolbar>
                                     <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dFC-Fm-5NR">
-                                        <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="474" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="vXZ-lx-hvc" id="xx3-ia-LZo"/>
@@ -107,6 +69,44 @@
                                     </adBannerView>
                                 </subviews>
                             </scrollView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Te3-QO-Frb">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <barButtonItem title="画像を選択" id="aX6-cK-Obn">
+                                        <connections>
+                                            <action selector="showImagePicker:" destination="vXZ-lx-hvc" id="KyL-Nf-YWK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem id="2Bi-CN-KBR">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EuD-FI-Lr6">
+                                            <rect key="frame" x="103" y="-5" width="113" height="54"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <state key="normal" title="画像を保存">
+                                                <color key="titleColor" red="1" green="0.0" blue="0.12889330169999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="saveImage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="sEN-3S-06G"/>
+                                            </connections>
+                                        </button>
+                                        <connections>
+                                            <action selector="saveImage:" destination="vXZ-lx-hvc" id="PFk-1K-QLN"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="UQK-l8-oo0">
+                                        <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" onImage="high.png" offImage="high.png" id="LFk-da-eHF">
+                                            <rect key="frame" x="-25" y="-15" width="51" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="switch:" destination="vXZ-lx-hvc" eventType="valueChanged" id="xhp-8w-PoI"/>
+                                            </connections>
+                                        </switch>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
